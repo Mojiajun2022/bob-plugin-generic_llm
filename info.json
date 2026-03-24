@@ -1,0 +1,217 @@
+{
+  "identifier": "io.github.mojiajun2022.generic.llm.translator",
+  "version": "0.1.0",
+  "category": "translate",
+  "name": "Generic LLM Translator",
+  "summary": "一个支持 Ollama 与通用兼容接口的高可定制翻译插件。支持流式输出、术语表、场景设置、占位符保护、自动场景识别与一致性复检，适用于普通翻译、UI 文案、本地化、论文与技术文档写作。",
+  "author": "Mjj",
+  "homepage": "https://github.com/Mojiajun2022/bob-plugin-generic_llm",
+  "appcast": "https://github.com/Mojiajun2022/bob-plugin-generic_llm/raw/main/appcast.json",
+  "minBobVersion": "1.8.0",
+  "options": [
+    {
+      "identifier": "providerType",
+      "type": "menu",
+      "title": "接口类型",
+      "defaultValue": "ollama",
+      "menuValues": [
+        { "title": "Ollama", "value": "ollama" },
+        { "title": "通用接口", "value": "generic" }
+      ]
+    },
+    {
+      "identifier": "enableStreaming",
+      "type": "menu",
+      "title": "启用流式输出",
+      "defaultValue": "yes",
+      "menuValues": [
+        { "title": "是", "value": "yes" },
+        { "title": "否", "value": "no" }
+      ]
+    },
+    {
+      "identifier": "apiUrl",
+      "type": "text",
+      "title": "API URL",
+      "defaultValue": "http://127.0.0.1:11434",
+      "textConfig": {
+        "type": "visible",
+        "height": 40,
+        "placeholderText": "Ollama 例：http://127.0.0.1:11434；通用接口例：https://your-api.com/v1"
+      }
+    },
+    {
+      "identifier": "apiKey",
+      "type": "text",
+      "title": "API Key",
+      "defaultValue": "",
+      "textConfig": {
+        "type": "secure",
+        "height": 40,
+        "placeholderText": "可留空；通用接口通常需要"
+      }
+    },
+    {
+      "identifier": "useBearerAuth",
+      "type": "menu",
+      "title": "使用 Bearer 认证",
+      "defaultValue": "yes",
+      "menuValues": [
+        { "title": "是", "value": "yes" },
+        { "title": "否", "value": "no" }
+      ]
+    },
+    {
+      "identifier": "model",
+      "type": "text",
+      "title": "模型名称",
+      "defaultValue": "qwen2.5",
+      "textConfig": {
+        "type": "visible",
+        "height": 40,
+        "placeholderText": "例如：qwen2.5 / qwen3 / llama3 / gpt-4.1-mini"
+      }
+    },
+    {
+      "identifier": "translationMode",
+      "type": "menu",
+      "title": "翻译模式",
+      "defaultValue": "auto_scene",
+      "menuValues": [
+        { "title": "自动场景", "value": "auto_scene" },
+        { "title": "通用翻译", "value": "general" },
+        { "title": "UI 文案", "value": "ui" },
+        { "title": "技术文档", "value": "technical" },
+        { "title": "简洁模式", "value": "concise" },
+        { "title": "双语对照", "value": "bilingual" }
+      ]
+    },
+    {
+      "identifier": "sceneContext",
+      "type": "text",
+      "title": "场景设置",
+      "defaultValue": "",
+      "textConfig": {
+        "type": "visible",
+        "height": 100,
+        "placeholderText": "例如：目前正在写论文，请按照物理学术论文风格帮我翻译"
+      }
+    },
+    {
+      "identifier": "speedMode",
+      "type": "menu",
+      "title": "速度模式",
+      "defaultValue": "balanced",
+      "menuValues": [
+        { "title": "快速", "value": "fast" },
+        { "title": "平衡", "value": "balanced" },
+        { "title": "高质量", "value": "quality" }
+      ]
+    },
+    {
+      "identifier": "disableThinking",
+      "type": "menu",
+      "title": "关闭思考模式（仅 Ollama）",
+      "defaultValue": "yes",
+      "menuValues": [
+        { "title": "是", "value": "yes" },
+        { "title": "否", "value": "no" }
+      ]
+    },
+    {
+      "identifier": "useStructuredOutput",
+      "type": "menu",
+      "title": "强制结构化输出",
+      "defaultValue": "yes",
+      "menuValues": [
+        { "title": "是", "value": "yes" },
+        { "title": "否", "value": "no" }
+      ]
+    },
+    {
+      "identifier": "preserveFormatting",
+      "type": "menu",
+      "title": "保留原始格式",
+      "defaultValue": "yes",
+      "menuValues": [
+        { "title": "是", "value": "yes" },
+        { "title": "否", "value": "no" }
+      ]
+    },
+    {
+      "identifier": "protectPlaceholders",
+      "type": "menu",
+      "title": "保护占位符/变量/标签",
+      "defaultValue": "yes",
+      "menuValues": [
+        { "title": "是", "value": "yes" },
+        { "title": "否", "value": "no" }
+      ]
+    },
+    {
+      "identifier": "consistencyCheck",
+      "type": "menu",
+      "title": "一致性复检",
+      "defaultValue": "no",
+      "menuValues": [
+        { "title": "是", "value": "yes" },
+        { "title": "否", "value": "no" }
+      ]
+    },
+    {
+      "identifier": "temperature",
+      "type": "text",
+      "title": "Temperature",
+      "defaultValue": "0",
+      "textConfig": {
+        "type": "visible",
+        "height": 40,
+        "placeholderText": "例如：0 / 0.1 / 0.2"
+      }
+    },
+    {
+      "identifier": "timeoutSec",
+      "type": "text",
+      "title": "请求超时（秒）",
+      "defaultValue": "20",
+      "textConfig": {
+        "type": "visible",
+        "height": 40,
+        "placeholderText": "例如：10 / 20 / 30"
+      }
+    },
+    {
+      "identifier": "keepAlive",
+      "type": "text",
+      "title": "Keep Alive（仅 Ollama）",
+      "defaultValue": "10m",
+      "textConfig": {
+        "type": "visible",
+        "height": 40,
+        "placeholderText": "例如：5m / 10m / 30m / -1"
+      }
+    },
+    {
+      "identifier": "glossary",
+      "type": "text",
+      "title": "术语表",
+      "defaultValue": "",
+      "textConfig": {
+        "type": "visible",
+        "height": 120,
+        "placeholderText": "每行一个，例如：\nServices=服务\nPlugin=插件\nFavorites=收藏夹"
+      }
+    },
+    {
+      "identifier": "systemPrompt",
+      "type": "text",
+      "title": "系统提示词",
+      "defaultValue": "你是一个专业翻译引擎，不是聊天助手。你的任务是把用户提供的原文翻译成目标语言。禁止输出解释、分析、注释、标题、前后缀、代码块、示例、拼音、术语拆解。只返回译文本身。",
+      "textConfig": {
+        "type": "visible",
+        "height": 120,
+        "placeholderText": "可自定义翻译风格"
+      }
+    }
+  ]
+}

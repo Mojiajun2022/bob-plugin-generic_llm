@@ -1,0 +1,13 @@
+{
+  "identifier": "io.github.mojiajun2022.generic.llm.translator",
+  "versions": [
+    {
+      "version": "0.1.0",
+      "desc": "初始公开版本：支持 Ollama 与通用接口，支持流式输出、术语表、场景设置、占位符保护、自动场景识别与一致性复检。",
+      "sha256": "795aefa4ced30b6d4e32c942ec426c85c62889f53d02625be50df68aa54deb2a",
+      "url": "https://github.com/Mojiajun2022/bob-plugin-generic_llm/releases/download/v0.1.0/generic_llm_translator.bobplugin",
+      "minBobVersion": "1.8.0",
+      "timestamp": 1751328000000
+    }
+  ]
+}
